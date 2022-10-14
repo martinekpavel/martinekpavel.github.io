@@ -8,7 +8,6 @@ body {
     margin: 30px;
     background-color: #f9f9f9;
 }
-
 img {
     width: 100%;
 }
@@ -30,10 +29,6 @@ p {
     max-width: 1024px;
     margin: 0 auto;
     padding: 0;
-
-
-
-
 }
 
 .photo {
@@ -41,5 +36,10 @@ p {
     margin: 10px 0;
     border: 1px solid #BFBFBF;
     background-color: white;
+}
 
+@media(max-width: 768px){
+    body {
+        margin:0;
+    }
 }
