@@ -9,6 +9,26 @@ body {
     font-family:  'Comfortaa', cursive;
 }
 
+.bg-light {
+    background-color: #f4f4f4;
+    color: #333333;
+}
+
+.bg-dark {
+    background-color: #333333;
+    color: #fff;
+}
+
+.list {
+    margin: 0.5rem 0;
+    list-style: none;
+}
+
+.list li  {
+    padding: 0.5rem 0;
+    border-bottom: #aaa dotted 1px;
+}
+
 #logo {
     font-size: larger;
     font-weight: bold;
@@ -22,6 +42,82 @@ p {
     margin: 0.75rem 0;
 }
 
+a {
+    text-decoration: none;
+}
+
+.l-heading  {
+    font-size: 4rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+    letter-spacing: 1rem;
+}
+
+.lead {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #93cb52;
+    color: white;
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #7ab436;
+}
+
+
+
+.source {
+    font-size: small;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #aaa;
+    margin: 10px 20px;
+}
+
+.source a {
+    color: #aaa;
+    text-decoration: none;
+}
+
+.container  {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 2rem;
+    overflow: hidden;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.m-heading {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.py-1 { padding: 1.5rem 0}
+.py-2 { padding: 2.5rem 0}
+.py-3 { padding: 3.5rem 0}
+
+.p-1 { padding: 1.5rem }
+.p-2 { padding: 2.5rem }
+.p-3 { padding: 3.5rem }
+
+.m-1 { margin: 1.5rem }
+.m-2 { margin: 2.5rem }
+.m-3 { margin: 3.5rem }
+
+
 #navbar {
     background: #333;
     color: #fff;
@@ -33,6 +129,7 @@ p {
     position: sticky;
     position: -webkit-sticky;
     top: 0;
+    z-index: 2;
 }
 
 #navbar ul {
@@ -52,12 +149,55 @@ p {
     margin: 0 0.25rem;
 }
 
-#navbar ul li a:hover {
+#navbar ul li a:hover,
+.active {
     background-color: #93cb52;
     border-radius: 1px;
 }
 
 #showcase {
-    background: #333 url("https://source.unsplash.com/random/?economy") no-repeat center center/cover;
+    background: #333 url("../img/bg_fullhd.jpg") no-repeat center center/cover;
     height: 100vh;
+}
+
+#showcase .showcase-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 0 2rem;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+}
+
+#about .items {
+    display: flex;
+    padding: 1rem;
+}
+
+#about .item {
+    text-align: center;
+    padding: 1rem;
+    flex: 1;
+}
+
+#about .items .item i {
+    background: #93cb52;
+    padding: 1rem;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+#project {
+    display: flex;
+}
+
+#project div {
+    flex: 1;
+}
+
+#project .project-img {
+    background: url("https://source.unsplash.com/random/?team") no-repeat center center/cover;
 }
