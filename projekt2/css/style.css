@@ -19,6 +19,11 @@ body {
     color: #fff;
 }
 
+.bg-primary {
+    background-color: #93cb52;
+}
+
+
 .list {
     margin: 0.5rem 0;
     list-style: none;
@@ -199,5 +204,49 @@ a {
 }
 
 #project .project-img {
-    background: url("https://source.unsplash.com/random/?team") no-repeat center center/cover;
+    background: url("../img/project_team.jfif") no-repeat center center/cover;
+}
+
+#images .items {
+    display: flex;
+    justify-content: space-between;
+}
+
+#images .items img {
+    display: block;
+    margin: auto;
+    width: 80%;
+}
+
+#contact {
+    display: flex;
+}
+
+
+#contact div {
+    flex: 1;
+}
+
+#contact .contact-form .form-group {
+    margin: 0.75rem;
+}
+
+#contact .contact-form label {
+    display: block;
+    margin-bottom: 3px;
+}
+
+#contact .contact-form input,
+#contact .contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+#contact h3 {
+    margin-top: 2rem;
+}
+
+#main-footer {
+    display: flex;
+    height: 400px;
 }
