@@ -137,6 +137,10 @@ a {
     z-index: 2;
 }
 
+#navbar #hambac {
+    display: none;
+}
+
 #navbar ul {
     display: flex;
     flex-wrap: wrap;
