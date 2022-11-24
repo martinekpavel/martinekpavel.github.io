@@ -210,9 +210,11 @@
         $('#navbar ul').slideToggle("slow")
     });
 
-    $('#navbar ul').click(function (){
-        $('#navbar ul').hide();
-    });
+    if($(window).width() < 501 ) {
+        $('#navbar ul').click(function () {
+            $('#navbar ul').hide();
+        });
+    }
 
     $('#navbar a, .btn').on('click', function (event) {
         if (this.hash !== '') {
