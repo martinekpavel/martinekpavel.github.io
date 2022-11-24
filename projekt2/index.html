@@ -206,14 +206,26 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"></script>
 <script>
+
+    window.addEventListener("resize", resizeListener);
+
+    let windowWidth = window.innerWidth;
+
+    function resizeListener() {
+        windowWidth = window.innerWidth;
+    }
+
     $('#navbar #hambac').click(function (){
         $('#navbar ul').slideToggle("slow")
     });
 
-    if($(window).width() < 501 ) {
+    if(windowWidth < 501 ) {
         $('#navbar ul').click(function () {
             $('#navbar ul').hide();
         });
+    }
+    else {
+        $('#navbar ul').show();
     }
 
     $('#navbar a, .btn').on('click', function (event) {
