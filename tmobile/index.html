@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifovník</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* tbody tr:not([style="display: none"]):nth-child(1) td {
+            background: rgb(222, 255, 222);
+            color: rgb(0, 35, 5);
+        } */
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+            <h1 class="display-4">T-Mobile tarify</h1>
+            <p class="lead text-start">Aplikace neřeší slevu MAGENTA (budete platit více než 399 Kč za každé z&nbsp;minimálně 2&nbsp;čísel) a slevy na fixní služby. <br> Tarify jsou řazeny vzestupně a&nbsp;na základě daných požadavků je první ten nejlevnější. <br> Tarify, kde je omezená rychlost větší než 3Mbps
+                jsou počítány jako s&nbsp;neomezenou rychlostí. <br> Pokud naleznete chybu, pište na <a style="text-decoration: none;" href="mailto:martinek.pavel@oa-opava.cz">martinek.pavel@oa-opava.cz</a>. Stránky nejsou optimalizovány pro mobilní telefony.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div>
+                    <label for="inputMinuty" class="form-label">Počet provolaných minut mimo rámcovou smlouvu</label>
+                    <div>
+                        <input id="inputMinuty" class="form-range" type="range" min="0" value="0" max="300" step="1">
+                    </div>
+                    <div id="outputMinuty">0</div>
+                </div>
+                <div>
+                    <label for="inputSms" class="form-label">Počet odeslaných SMS</label>
+                    <div> <input id="inputSms" class="form-range" type="range" min="0" value="0" max="300" step="1">
+                    </div>
+                    <div id="outputSms">0</div>
+                </div>
+
+            </div>
+            <div class="col-6">
+                <div>
+                    <label for="inputData" class="form-label"> Datový limit s neomezenou rychlostí</label>
+                    <div> <input id="inputData" class="form-range" type="range" min="0" value="0" max="30" step="0.5">
+                    </div>
+                    <div id="outputData">0</div>
+                </div>
+                <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" value="" id="poradOnlineCheck">
+                    <label class="form-check-label" for="poradOnlineCheck">
+                        Pořád online (minimálně 256kbps)
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        </div>
+        <table class="table table-striped" id="table-tarify">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Název tarifu</th>
+                    <th scope="col">Volné minuty</th>
+                    <th scope="col">Volné SMS</th>
+                    <th scope="col">Data plná rychlost</th>
+                    <th scope="col">Cena za minutu</th>
+                    <th scope="col">Cena SMS</th>
+                    <th scope="col">Cena tarifu</th>
+                    <th scope="col">Fakturováno</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-poradonline="ano" data-limitdat="5">
+                    <td>Internet 5 GB</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>5 GB</td>
+                    <td>2.10</td>
+                    <td>0.90</td>
+                    <td>147.00</td>
+                    <td>147.00</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="12">
+                    <td>Internet 12 GB</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>12 GB</td>
+                    <td>2.10</td>
+                    <td>0.90</td>
+                    <td>291.00</td>
+                    <td>291.00</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="40">
+                    <td>Internet neomezeně</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>30 GB, poté 10 Mbps</td>
+                    <td>2.10</td>
+                    <td>0.90</td>
+                    <td>432.00</td>
+                    <td>432.00</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="40">
+                    <td>Internet neomezeně XL</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>neomezeně</td>
+                    <td>2.10</td>
+                    <td>0.90</td>
+                    <td>612.00</td>
+                    <td>612.00</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="40">
+                    <td>Neomezeně L</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>12 GB, poté 3 Mbps</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>537.84</td>
+                    <td>537.84</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="40">
+                    <td>Neomezeně XL</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>15 GB, poté 10 Mbps + TV</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>602.64</td>
+                    <td>602.64</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="40">
+                    <td>Neomezeně 2XL</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>30 GB, poté 10 Mbps + TV</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>667.44</td>
+                    <td>667.44</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="40">
+                    <td>Neomezeně 3XL</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>40 GB, poté 20 Mbps + TV + 100 min do EU</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>738.72</td>
+                    <td>738.72</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="40">
+                    <td>Neomezeně 4XL</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně + TV + 1000 min do EU</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>868.32</td>
+                    <td>868.32</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="40">
+                    <td>Neomezeně 5XL</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně + TV + neomezeně min do EU</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>1062.72</td>
+                    <td>1062.72</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="5">
+                    <td>Plné dat Data 5 GB Plus</td>
+                    <td>150</td>
+                    <td>150</td>
+                    <td>5 GB</td>
+                    <td>2.10</td>
+                    <td>0.90</td>
+                    <td>276.00</td>
+                    <td>276.00</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="12">
+                    <td>Plné dat Data 12 GB Plus</td>
+                    <td>150</td>
+                    <td>150</td>
+                    <td>12 GB</td>
+                    <td>2.10</td>
+                    <td>0.90</td>
+                    <td>417.00</td>
+                    <td>417.00</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="40">
+                    <td>Plné dat Data neomezeně</td>
+                    <td>150</td>
+                    <td>150</td>
+                    <td>30 GB, pak 10 Mbps</td>
+                    <td>2.10</td>
+                    <td>0.90</td>
+                    <td>558.00</td>
+                    <td>558.00</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="40">
+                    <td>Plné dat Data neomezeně XL</td>
+                    <td>150</td>
+                    <td>150</td>
+                    <td>neomezeně</td>
+                    <td>2.10</td>
+                    <td>0.90</td>
+                    <td>744.00</td>
+                    <td>744.00</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="1">
+                    <td>Start 150 Plus</td>
+                    <td>150</td>
+                    <td>150</td>
+                    <td>1 GB</td>
+                    <td>2.10</td>
+                    <td>0.90</td>
+                    <td>228.00</td>
+                    <td>228.00</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="1">
+                    <td>Pořád online  1 GB Plus</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>1 GB</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>299.01</td>
+                    <td>299.01</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="2">
+                    <td>Pořád online  2 GB Plus</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>2 GB</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>346.68</td>
+                    <td>346.68</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="3">
+                    <td>Pořád online  3 GB Plus</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>3 GB</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>362.88</td>
+                    <td>362.88</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="4">
+                    <td>Pořád online  4 GB Plus</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>4 GB</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>379.08</td>
+                    <td>379.08</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="5">
+                    <td>Pořád online  5 GB Plus</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>5 GB</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>401.76</td>
+                    <td>401.76</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="6">
+                    <td>Pořád online  6 GB Plus</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>6 GB</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>417.96 </td>
+                    <td>417.96</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="7">
+                    <td>Pořád online  7 GB Plus</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>7 GB</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>434.16</td>
+                    <td>434.16</td>
+                </tr>
+                <tr data-poradonline="ano" data-limitdat="10">
+                    <td>Pořád online  10 GB Plus</td>
+                    <td>neomezeně</td>
+                    <td>neomezeně</td>
+                    <td>10 GB</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>466.56</td>
+                    <td>466.56</td>
+                </tr>
+                <tr data-limitdat="0.01">
+                    <td>Start 30 a 10MB</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>10 MB</td>
+                    <td>1.23</td>
+                    <td>1.05</td>
+                    <td>57.60</td>
+                    <td>57.60</td>
+                </tr>
+                <tr data-limitdat="0.5">
+                    <td>Start 30 a 500MB</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>500 MB</td>
+                    <td>1.23</td>
+                    <td>1.05</td>
+                    <td>90.01</td>
+                    <td>90.01</td>
+                </tr>
+                <tr data-limitdat="2.5">
+                    <td>Start 30 a 2,5 GB</td>
+                    <td>30</td>
+                    <td>30</td>
+                    <td>2,5 GB</td>
+                    <td>1.23</td>
+                    <td>1.05</td>
+                    <td>149.00</td>
+                    <td>149.00</td>
+                </tr>
+                <tr data-limitdat="2.5">
+                    <td>Start 80 a 2,5 GB</td>
+                    <td>80</td>
+                    <td>80</td>
+                    <td>2,5 GB</td>
+                    <td>1.23</td>
+                    <td>1.05</td>
+                    <td>235.00</td>
+                    <td>235.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        const inputMinuty = document.getElementById('inputMinuty');
+        const inputSms = document.getElementById('inputSms');
+        const inputData = document.getElementById('inputData');
+        const inputPoradOnline = document.getElementById('poradOnlineCheck');
+
+        outputMinuty = document.getElementById('outputMinuty');
+        outputSms = document.getElementById('outputSms');
+        outputData = document.getElementById('outputData');
+
+        sortTable();
+
+        inputMinuty.oninput = function () {
+            outputMinuty.innerHTML = this.value;
+            spocitej();
+        };
+        inputSms.oninput = function () {
+            outputSms.innerHTML = this.value;
+            spocitej();
+        };
+        inputData.oninput = function () {
+            outputData.innerHTML = this.value;
+            spocitej();
+        };
+
+        inputPoradOnline.onchange = function () {
+            spocitej();
+        };
+
+    
+        function spocitej() {
+
+            let table, rows, i, minuty, sms;
+            table = document.getElementById("table-tarify");
+            rows = table.rows;
+
+            const inputMinuty = document.getElementById('inputMinuty');
+            const inputSms = document.getElementById('inputSms');
+            const inputData = document.getElementById('inputData');
+            const inputPoradOnline = document.getElementById('poradOnlineCheck');
+
+            for (i = 1; i < (rows.length); i++) {
+
+
+
+                if (parseInt(inputSms.value) <= parseInt((rows[i].getElementsByTagName("TD")[2]).innerHTML)) sms = 0;
+                else sms = parseInt(inputSms.value) - parseInt((rows[i].getElementsByTagName("TD")[2]).innerHTML);
+
+                if (parseInt(inputMinuty.value) <= parseInt((rows[i].getElementsByTagName("TD")[1]).innerHTML)) minuty = 0;
+                else minuty = parseInt(inputMinuty.value) - parseInt((rows[i].getElementsByTagName("TD")[1]).innerHTML);
+
+                if ((rows[i].getElementsByTagName("TD")[1]).innerHTML == 'neomezeně' || (rows[i].getElementsByTagName("TD")[2]).innerHTML == 'neomezeně') {
+                    sms = 0;
+                    minuty = 0;
+                }
+
+                (rows[i].getElementsByTagName("TD")[7]).innerHTML = (sms * parseFloat((rows[i].getElementsByTagName("TD")[5]).innerHTML) + minuty * parseFloat((rows[i].getElementsByTagName("TD")[4]).innerHTML) + parseFloat((rows[i].getElementsByTagName("TD")[6]).innerHTML)).toFixed(2);
+                
+                
+                if (parseFloat(inputData.value) > parseFloat(rows[i].dataset.limitdat) || inputPoradOnline.checked == true && rows[i].dataset.poradonline != "ano") {
+                    rows[i].style.display = 'none';
+                }
+                else rows[i].style.display = '';
+
+                // if (inputPoradOnline.checked == true && rows[i].dataset.poradonline != "ano") rows[i].style.display = 'none';
+                // else rows[i].style.display = '';
+            }
+            sortTable();
+        }
+        // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_sort_table
+        function sortTable() {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("table-tarify");
+
+            switching = true;
+            /*Make a loop that will continue until
+            no switching has been done:*/
+            while (switching) {
+                //start by saying: no switching is done:
+                switching = false;
+                rows = table.rows;
+                /*Loop through all table rows (except the
+                first, which contains table headers):*/
+                for (i = 1; i < (rows.length - 1); i++) {
+                    //start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /*Get the two elements you want to compare,
+                    one from current row and one from the next:*/
+                    x = rows[i].getElementsByTagName("TD")[7];
+                    y = rows[i + 1].getElementsByTagName("TD")[7];
+
+                    //check if the two rows should switch place:
+                    if (Number(x.innerHTML) > Number(y.innerHTML)) {
+
+                        (Number(x.innerHTML) > Number(y.innerHTML))
+                        //if so, mark as a switch and break the loop:
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+                if (shouldSwitch) {
+                    /*If a switch has been marked, make the switch
+                    and mark that a switch has been done:*/
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
