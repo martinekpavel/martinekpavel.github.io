@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Vítejte na webovce knihovny na Kvapice" />
+    <meta name="keywords" content="knihovna,obchodka,opava" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      media="screen and (min-width: 1100px)"
+      href="css/widescreen.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 768px)"
+      href="css/mobile.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <title>Knihovna na Kvapilce | OA a SOŠL Opava</title>
+  </head>
+  <body id="home">
+    <!-- Menu -->
+    <nav id="navbar">
+      <div id="logo">
+        <i class="fas fa-book-open text-primary"></i>
+        Knihovna
+        <span class="text-primary">na Kvapilce</span>
+      </div>
+
+      <ul>
+        <li><a href="#home">Úvod</a></li>
+        <li><a href="#what">Co děláme</a></li>
+        <li><a href="#who">O nás</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <!-- Header: Showcase -->
+    <header id="showcase">
+      <div class="showcase-content">
+        <h1 class="l-heading">Milujeme knihy a knihy milují nás</h1>
+        <p class="lead">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis,
+          repellendus.
+        </p>
+        <a href="#what" class="btn">Dozvědět se víc</a>
+      </div>
+    </header>
+
+    <!-- Section: Co děláme -->
+    <section id="what" class="bg-light py-1">
+      <div class="container">
+        <h2 class="m-heading text-center">
+          <span class="text-primary">Co</span>
+          děláme
+        </h2>
+        <div class="items">
+          <div class="item">
+            <i class="fas fa-book fa-2x"></i>
+            <div>
+              <h3>Půjčujeme knihy</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Eveniet, laboriosam?
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <i class="fas fa-book-reader fa-2x"></i>
+            <div>
+              <h3>Čtenářské dílny</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Eveniet, laboriosam?
+              </p>
+            </div>
+          </div>
+          <div class="item">
+            <i class="fas fa-pencil-alt fa-2x"></i>
+            <div>
+              <h3>Recenze</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Eveniet, laboriosam?
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Kdo jsme -->
+    <section id="who">
+      <div class="who-img"></div>
+      <div class="who-text bg-dark p-2">
+        <h2 class="m-heading">
+          <span class="text-primary">Kdo</span>
+          jsme
+        </h2>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente vel
+          veritatis sed asperiores. Architecto numquam a vero sint aliquid et?
+        </p>
+        <h3>Náš tým</h3>
+        <ul class="list">
+          <li>Mgr. Alena Holíková: tělo i duše knihovny</li>
+          <li>Mgr. Pavel Martínek: technická podpora</li>
+        </ul>
+      </div>
+    </section>
+    <!-- Section Knížky -->
+    <section id="books" class="py-1">
+      <div class="container">
+        <h2 class="m-heading text-center">
+          <span class="text-primary">Naše nejnovější</span>
+          knihy
+        </h2>
+        <div class="items py-1">
+          <div><img src="./img/thumb_33.png" alt="obal knihy" /></div>
+          <div><img src="./img/thumb_42.png" alt="obal knihy" /></div>
+          <div><img src="./img/thumb_72.png" alt="obal knihy" /></div>
+          <div><img src="./img/thumb_75.png" alt="obal knihy" /></div>
+          <div><img src="./img/thumb_86.png" alt="obal knihy" /></div>
+        </div>
+      </div>
+    </section>
+    <!-- Kontakt Section -->
+    <section id="contact">
+      <div class="contact-form bg-primary p-2">
+        <h2 class="m-heading">Napište nám</h2>
+        <p>Využijte níže uvedený formulář.</p>
+        <form method="POST" action="php/form.php">
+          <div class="form-group">
+            <label for="name">Jméno</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="vaše jméno a příjmení"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              placeholder="váš email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone">Telefon</label>
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              placeholder="váš telefon"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Zpráva</label>
+            <textarea
+              name="message"
+              id="message"
+              placeholder="napište nám vzkaz"
+            ></textarea>
+          </div>
+          <input type="submit" value="Odeslat" />
+        </form>
+      </div>
+      <div class="who-text bg-dark p-2">
+        <h2 class="m-heading">
+          <span class="text-primary">Kontakt</span>
+        </h2>
+        <h3>Adresa školy</h3>
+        <ul class="list">
+          <li>
+            Obchodní akademie a Střední odborná škola logistická, Opava,
+            příspěvková organizace
+          </li>
+          <li>Hany Kvapilové 1656/20</li>
+          <li>746 01 Opava</li>
+        </ul>
+        <h3>Email</h3>
+        <ul class="list">
+          <li>holikova.alena@oa-opava.cz</li>
+        </ul>
+        <h3>Telefon</h3>
+        <ul class="list">
+          <li>+420 553 759 160</li>
+        </ul>
+      </div>
+    </section>
+    <footer id="main-footer" class="bg-dark text-center py-1">
+      <div class="containter">
+        <p>Copyright &copy; 2021, Knihovna na Kvapilce</p>
+      </div>
+    </footer>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
