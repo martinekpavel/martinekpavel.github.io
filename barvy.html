@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <title>Míchačka RGB barev</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .slider-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="range"] {
+      width: 100%;
+    }
+
+    #colorPreview {
+      width: 100%;
+      height: 100px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+
+    .rgb-values {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Míchej si vlastní RGB barvu</h1>
+
+    <div class="slider-group">
+      <label for="red">Červená (R): <span id="redVal">0</span></label>
+      <input type="range" id="red" min="0" max="255" value="0">
+    </div>
+
+    <div class="slider-group">
+      <label for="green">Zelená (G): <span id="greenVal">0</span></label>
+      <input type="range" id="green" min="0" max="255" value="0">
+    </div>
+
+    <div class="slider-group">
+      <label for="blue">Modrá (B): <span id="blueVal">0</span></label>
+      <input type="range" id="blue" min="0" max="255" value="0">
+    </div>
+
+    <div id="colorPreview"></div>
+    <div class="rgb-values" id="rgbText">rgb(0, 0, 0)</div>
+  </div>
+
+  <script>
+    const redSlider = document.getElementById('red');
+    const greenSlider = document.getElementById('green');
+    const blueSlider = document.getElementById('blue');
+
+    const redVal = document.getElementById('redVal');
+    const greenVal = document.getElementById('greenVal');
+    const blueVal = document.getElementById('blueVal');
+
+    const preview = document.getElementById('colorPreview');
+    const rgbText = document.getElementById('rgbText');
+
+    function updateColor() {
+      const r = redSlider.value;
+      const g = greenSlider.value;
+      const b = blueSlider.value;
+
+      redVal.textContent = r;
+      greenVal.textContent = g;
+      blueVal.textContent = b;
+
+      const rgb = `rgb(${r}, ${g}, ${b})`;
+      preview.style.backgroundColor = rgb;
+      rgbText.textContent = rgb;
+    }
+
+    // Přidej posluchače změn
+    redSlider.addEventListener('input', updateColor);
+    greenSlider.addEventListener('input', updateColor);
+    blueSlider.addEventListener('input', updateColor);
+
+    // Inicializuj barvu
+    updateColor();
+  </script>
+
+</body>
+</html>
